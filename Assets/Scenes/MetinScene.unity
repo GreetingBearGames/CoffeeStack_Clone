@@ -278,6 +278,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a994216af19d4d84db3d4e72681b87a9, type: 3}
+--- !u!114 &285370202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4456114288939963489, guid: e48556c45484c704997ee15906c0a169, type: 3}
+  m_PrefabInstance: {fileID: 1301556660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd744bcc93fedd147ab21498a08619e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &289243438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,14 +1125,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2002298397}
     m_Modifications:
-    - target: {fileID: -3357787300841960699, guid: e48556c45484c704997ee15906c0a169, type: 3}
-      propertyPath: movementSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -3357787300841960699, guid: e48556c45484c704997ee15906c0a169, type: 3}
-      propertyPath: horizontalSpeed
-      value: 6
-      objectReference: {fileID: 0}
+    - target: {fileID: 1903106923837315668, guid: e48556c45484c704997ee15906c0a169, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 2898560369300335344, guid: e48556c45484c704997ee15906c0a169, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1170,8 +1177,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -3357787300841960699, guid: e48556c45484c704997ee15906c0a169, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e48556c45484c704997ee15906c0a169, type: 3}
 --- !u!1 &1378640236
 GameObject:
@@ -1542,6 +1548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec7ab62c6e07a841920200efa72f2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valueController: {fileID: 285370202}
   Player: {fileID: 952948897}
   nodes: []
 --- !u!1 &2002298396

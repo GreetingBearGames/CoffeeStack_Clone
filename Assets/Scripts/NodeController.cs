@@ -5,9 +5,17 @@ using DG.Tweening;
 
 public class NodeController : MonoBehaviour
 {
+    [SerializeField] ValueController valueController;
     [SerializeField] public Transform connectedNode;
     [SerializeField] public float movementSpeed=10;
+
+    public int glassValue=2;
     
+
+    private void Start() {
+        valueController = NodeManager.Instance.valueController;
+        valueController.value += 2;
+    }
     void Update()
     {
 		try
@@ -23,6 +31,11 @@ public class NodeController : MonoBehaviour
 			throw;
 		}  
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        ValueChange(other);
+    }    
 
     public void StartScaleAnimation(){
         StartCoroutine(MakeNodeBigger());
@@ -40,6 +53,22 @@ public class NodeController : MonoBehaviour
         if (!connectedNode.CompareTag("Player"))
         {
              connectedNode.GetComponent<NodeController>().StartScaleAnimation();
+        }
+    }
+
+    private void ValueChange(Collider other){
+
+        switch (other.tag)
+        {
+            case "Collectable":
+                //Start metodunda hesaplandı.
+                break;
+            //Collide durumları ve değerleri için caseler burada olacak
+            
+
+            
+            default:
+                break;
         }
     }
 }

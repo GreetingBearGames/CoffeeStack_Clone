@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollectController : MonoBehaviour
 {
+
     public Transform lastOne;
 
     private void OnTriggerEnter(Collider other)
@@ -28,4 +29,7 @@ public class CollectController : MonoBehaviour
         other.GetComponent<BoxCollider>().isTrigger = false;
         other.GetComponent<NodeController>().StartScaleAnimation();
     }
+
+
+
 }

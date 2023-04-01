@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NodeManager : MonoBehaviour
 {
+    [SerializeField] public ValueController valueController;
     [SerializeField] Transform Player;
     private static NodeManager _instance; 
     public List<GameObject> nodes;
@@ -11,7 +12,6 @@ public class NodeManager : MonoBehaviour
     public Transform lastNode
     {
         get {
-            Debug.Log(_lastNode);  
             return _lastNode; }
         set { _lastNode = value; }
     }
