@@ -16,12 +16,12 @@ public class EdgeHandPositioner : MonoBehaviour
     {
         if (edgeHandGrabber._isGrabbed == false)
         {
-            if ((Time.time - _savedTime) > _delay)
+            if (other.tag == "Hand")
             {
-                _savedTime = Time.time;
-                if (other.tag == "Hand")
+                if ((Time.time - _savedTime) > _delay)
                 {
                     MoveEdgeHand(other.gameObject);
+                    _savedTime = Time.time;
                 }
             }
         }
