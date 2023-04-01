@@ -34,7 +34,9 @@ public class NodeController : MonoBehaviour
         transform.DOScale(scale,0.1f).OnComplete(()=>{
             transform.DOScale(Vector3.one,0.1f);
         });
+        
         yield return new WaitForSeconds(0.05f);
+
         if (!connectedNode.CompareTag("Player"))
         {
              connectedNode.GetComponent<NodeController>().StartScaleAnimation();

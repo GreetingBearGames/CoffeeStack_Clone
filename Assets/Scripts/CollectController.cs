@@ -12,7 +12,6 @@ public class CollectController : MonoBehaviour
         {
             Collect(other.gameObject);
         }
-     
     }
 
     private void Collect(GameObject other)

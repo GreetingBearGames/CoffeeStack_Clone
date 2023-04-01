@@ -7,7 +7,6 @@ public class NodeManager : MonoBehaviour
     [SerializeField] Transform Player;
     private static NodeManager _instance; 
     public List<GameObject> nodes;
-
     private Transform _lastNode; 
     public Transform lastNode
     {
@@ -18,7 +17,7 @@ public class NodeManager : MonoBehaviour
     }
     
 
-    public static NodeManager Instance
+    public static NodeManager Instance 
     {     
         get
         {
