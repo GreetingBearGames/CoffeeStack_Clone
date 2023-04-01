@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AutoMove_Demo : MonoBehaviour
 {
@@ -20,5 +21,12 @@ public class AutoMove_Demo : MonoBehaviour
             this.transform.Translate(Input.GetAxis("Horizontal") * horizontalSpeed, 0, 0);
         }
 
+    }
+
+    public void SpeedChanger(float speedRatio, float duration)
+    {
+        var newSpeedValue = forwardSpeed * speedRatio;
+        // Tween a float called forwardSpeed to newSpeedValue in duration second
+        DOTween.To(() => forwardSpeed, x => forwardSpeed = x, newSpeedValue, duration);
     }
 }
