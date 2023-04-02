@@ -7,7 +7,7 @@ public class NodeController : MonoBehaviour
 {
     [SerializeField] ValueController valueController;
     [SerializeField] public Transform connectedNode;
-    [SerializeField] public float movementSpeed=10;
+    [SerializeField] public float movementSpeed=15;
 
     public int glassValue=2;
     
