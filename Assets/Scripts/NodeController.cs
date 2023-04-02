@@ -8,7 +8,6 @@ public class NodeController : MonoBehaviour
     [SerializeField] ValueController valueController;
     [SerializeField] public Transform connectedNode;
     [SerializeField] public float movementSpeed=15;
-
     public int glassValue=2;
     
 
@@ -34,6 +33,10 @@ public class NodeController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("FinishLine"))
+        {
+           NodeManager.Instance.MovePlayerToMid();
+        }
         ValueChange(other);
     }    
 

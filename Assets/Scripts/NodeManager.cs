@@ -6,6 +6,7 @@ public class NodeManager : MonoBehaviour
 {
     [SerializeField] public ValueController valueController;
     [SerializeField] Transform Player;
+    [SerializeField] MovementController movementController;
     private static NodeManager _instance; 
     public List<GameObject> nodes;
     private Transform _lastNode; 
@@ -32,5 +33,9 @@ public class NodeManager : MonoBehaviour
     private void Awake() {
         _instance = this;
         lastNode = Player;
+    }
+
+    public void MovePlayerToMid(){
+        movementController.isFinished = true;
     }
 }
