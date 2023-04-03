@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class EdgeHandGrabber : MonoBehaviour
 {
-    public bool _isGrabbed = false;
+    [HideInInspector] public bool _isGrabbed = false;
     private Transform _movingPart;
     private AutoMove_Demo _autoMove_Demo;
 
@@ -19,26 +19,33 @@ public class EdgeHandGrabber : MonoBehaviour
     {
         if (other.tag == "Collected" && !_isGrabbed)
         {
-            Debug.Log("collided " + other.gameObject.name);
-            OffsetMover();
             CupGrabber(other.gameObject);
+            OffsetMover();
             StartCoroutine(PlayerSpeedChanger(0.25f, 0.2f, 0.5f));
             _isGrabbed = true;
         }
     }
 
 
-    private void OffsetMover()
-    {
-        var offset = 2f;
-        var offsetXPos = _movingPart.position.x + offset;
-        _movingPart.DOMoveX(offsetXPos, 0.5f);
-    }
-
-
     private void CupGrabber(GameObject grabbedCub)
     {
         grabbedCub.transform.parent = _movingPart;
+
+        //BURDA ELİN ANİMASYONUNU OYNATACAKSIN
+    }
+
+
+    private void OffsetMover()
+    {
+        var offset = 2f;
+
+        if (transform.parent.GetChild(1).transform.position.x < 0)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
+        {
+            offset *= -1;
+        }
+
+        var offsetXPos = _movingPart.position.x + offset;
+        _movingPart.DOMoveX(offsetXPos, 0.5f);
     }
 
 
