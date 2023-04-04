@@ -24,7 +24,7 @@ public class FinishHandGrabber : MonoBehaviour
         {
             RemainedCupChecker(other.gameObject);
             CupGrabber(other.gameObject);
-            StartCoroutine("FinishMoneyUISpawner");
+            StartCoroutine(FinishMoneyUISpawner(other.transform.position));
             OffsetMover();
             _isGrabbed = true;
         }
@@ -50,17 +50,15 @@ public class FinishHandGrabber : MonoBehaviour
     }
 
 
-    IEnumerator FinishMoneyUISpawner()
+    IEnumerator FinishMoneyUISpawner(Vector3 cupPosition)
     {
         _gameCanvas = GameObject.FindGameObjectWithTag("GameCanvas");
 
         for (int i = 0; i < 4; i++)
         {
-            var randomSpawnPos = new Vector3(transform.position.x + Random.Range(-100f, 100f),
-                                            transform.position.y + Random.Range(-100f, 100f),
-                                            transform.position.z);
-            var obj = Instantiate(_finishMoneyPrefab, randomSpawnPos, Quaternion.identity);
+            var obj = Instantiate(_finishMoneyPrefab);
             obj.transform.SetParent(_gameCanvas.transform, false);
+            WorldtoUIPosition(cupPosition, obj, true);
             yield return new WaitForSeconds(0.15f);
         }
     }
@@ -104,4 +102,24 @@ public class FinishHandGrabber : MonoBehaviour
             nextChildNumber++;
         }
     }
+
+
+    private void WorldtoUIPosition(Vector3 worldPosition, GameObject uiObject, bool isRandomness)
+    {
+        var canvasRect = _gameCanvas.GetComponent<RectTransform>();
+        var viewportPosition = Camera.main.WorldToViewportPoint(worldPosition);
+        var WorldObject_ScreenPosition = new Vector2(
+                                        ((viewportPosition.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)),
+                                        ((viewportPosition.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)));
+
+        if (isRandomness)
+        {
+            WorldObject_ScreenPosition = new Vector2(WorldObject_ScreenPosition.x + Random.Range(-100f, 100f),
+                                            WorldObject_ScreenPosition.y + Random.Range(-100f, 100f));
+        }
+
+        uiObject.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
+    }
+
+
 }
