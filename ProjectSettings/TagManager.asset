@@ -4,6 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Collectable
+  - Collected
+  - Hand
+  - GameCanvas
+  - FinishMoneyTarget
+  - ScoreTowerItem
   - Writable
   layers:
   - Default
