@@ -19,10 +19,18 @@ public class NodeController : MonoBehaviour
     {
 		try
 		{
-            transform.position = new Vector3(
+
+            if (connectedNode.CompareTag("Player"))
+            {
+                transform.position = connectedNode.transform.position;
+            }else
+            {
+                transform.position = new Vector3(
                 Mathf.Lerp(transform.position.x, connectedNode.position.x, Time.deltaTime*movementSpeed),
                 transform.position.y,
                 connectedNode.position.z + 1);
+            }
+            
         }
         catch (System.Exception)
 		{

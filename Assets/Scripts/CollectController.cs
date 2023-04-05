@@ -19,6 +19,10 @@ public class CollectController : MonoBehaviour
     {
         lastOne = NodeManager.Instance.lastNode;
         other.transform.position = lastOne.transform.position + Vector3.forward;
+        if (NodeManager.Instance.nodes.Count == 0)
+        {
+            other.transform.position = transform.position;
+        }
         other.AddComponent<NodeController>().connectedNode = lastOne.transform;
         other.AddComponent<CollectController>();
 
