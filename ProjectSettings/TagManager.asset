@@ -10,6 +10,7 @@ TagManager:
   - GameCanvas
   - FinishMoneyTarget
   - ScoreTowerItem
+  - Writable
   layers:
   - Default
   - TransparentFX
