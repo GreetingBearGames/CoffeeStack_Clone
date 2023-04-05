@@ -9,6 +9,7 @@ TagManager:
   - Hand
   - GameCanvas
   - FinishMoneyTarget
+  - ScoreTowerItem
   layers:
   - Default
   - TransparentFX
