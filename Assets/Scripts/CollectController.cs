@@ -41,14 +41,18 @@ public class CollectController : MonoBehaviour
                                         other.transform.position,
                                         other.transform.rotation,
                                         NodeManager.Instance.Player);
+        valueText.SetActive(false);
         Destroy(valueText,1f);
-        switch (tag)
+        switch (other.tag)
         {
             case "LidDoor":
                 valueText.GetComponentInChildren<TextMeshProUGUI>().text = "$5";
+                valueText.SetActive(true);
                 break;
-            case "Collectable":
+            case "Collected":
                 valueText.GetComponentInChildren<TextMeshProUGUI>().text = other.GetComponent<NodeController>().glassValue.ToString();
+                Debug.Log(other.GetComponent<NodeController>().glassValue);
+                valueText.SetActive(true);
                 break;
             default:
                 break;
