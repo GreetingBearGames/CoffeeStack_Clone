@@ -6,12 +6,43 @@ using TMPro;
 public class CollectController : MonoBehaviour
 {
     public Transform lastOne;
+    GameObject newLidGameObject, newCoffeeAddedGameObject, newMilkAddedGameObject,
+    newCoffeeFoamedGameObject, newCremaAddedGameObject, newSleevedGameObject, currentGameObject;
 
     private void OnTriggerEnter(Collider other)
     {
+        currentGameObject = this.gameObject;
         if (other.CompareTag("Collectable"))
         {
             Collect(other.gameObject);
+        }
+        else if (other.CompareTag("LidAdder")) {
+            var currentTransform = currentGameObject.transform;
+            Destroy(currentGameObject);
+            Instantiate(newLidGameObject, currentTransform);
+        } else if (other.CompareTag("CoffeeAdder")) {
+            var currentTransform = currentGameObject.transform;
+            Destroy(currentGameObject);
+            Instantiate(newCoffeeAddedGameObject, currentTransform);
+        } else if (other.CompareTag("CoffeeFoamer")) {
+            var currentTransform = currentGameObject.transform;
+            Destroy(currentGameObject);
+            Instantiate(newCoffeeFoamedGameObject, currentTransform);
+        } else if (other.CompareTag("MilkAdder")) {
+            var currentTransform = currentGameObject.transform;
+            Destroy(currentGameObject);
+            Instantiate(newMilkAddedGameObject, currentTransform);
+        } else if (other.CompareTag("CremaCupGate")) {
+            var currentTransform = currentGameObject.transform;
+            Destroy(currentGameObject);
+            Instantiate(newCremaAddedGameObject, currentTransform);
+        } else if (other.CompareTag("SellGate")) {
+            Vector3.MoveTowards(currentGameObject.transform.position, currentGameObject.transform.position + Vector3.right, 1f);
+            Destroy(currentGameObject);
+        } else if (other.CompareTag("SleeveAdder")) {
+            var currentTransform = currentGameObject.transform;
+            Destroy(currentGameObject);
+            Instantiate(newSleevedGameObject, currentTransform);
         }
 
         ShowValue(other);
