@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CollectController : MonoBehaviour
 {
-
     public Transform lastOne;
 
     private void OnTriggerEnter(Collider other)
@@ -13,6 +13,8 @@ public class CollectController : MonoBehaviour
         {
             Collect(other.gameObject);
         }
+
+        ShowValue(other);
     }
 
     private void Collect(GameObject other)
@@ -34,6 +36,24 @@ public class CollectController : MonoBehaviour
         other.GetComponent<NodeController>().StartScaleAnimation();
     }
 
+    private void ShowValue(Collider other){
+        GameObject valueText = Instantiate(NodeManager.Instance.showValuePrefab,
+                                        other.transform.position,
+                                        other.transform.rotation,
+                                        NodeManager.Instance.Player);
+        Destroy(valueText,1f);
+        switch (tag)
+        {
+            case "LidDoor":
+                valueText.GetComponentInChildren<TextMeshProUGUI>().text = "$5";
+                break;
+            case "Collectable":
+                valueText.GetComponentInChildren<TextMeshProUGUI>().text = other.GetComponent<NodeController>().glassValue.ToString();
+                break;
+            default:
+                break;
+        }
 
+    }
 
 }

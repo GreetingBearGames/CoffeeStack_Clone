@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class NodeManager : MonoBehaviour
 {
+    [SerializeField] public GameObject showValuePrefab;
     [SerializeField] public ValueController valueController;
-    [SerializeField] Transform Player;
+    [SerializeField] public Transform Player;
     [SerializeField] MovementController movementController;
     private static NodeManager _instance; 
     public List<GameObject> nodes;

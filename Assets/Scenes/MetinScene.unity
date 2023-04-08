@@ -6323,6 +6323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec7ab62c6e07a841920200efa72f2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showValuePrefab: {fileID: 1385062866274722405, guid: 62406c8358072614e9116b0db90aa3bb, type: 3}
   valueController: {fileID: 285370202}
   Player: {fileID: 952948897}
   movementController: {fileID: 1101068163}
