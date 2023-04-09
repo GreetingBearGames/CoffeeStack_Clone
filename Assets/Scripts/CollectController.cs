@@ -6,43 +6,29 @@ using TMPro;
 public class CollectController : MonoBehaviour
 {
     public Transform lastOne;
-    GameObject newLidGameObject, newCoffeeAddedGameObject, newMilkAddedGameObject,
-    newCoffeeFoamedGameObject, newCremaAddedGameObject, newSleevedGameObject, currentGameObject;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        currentGameObject = this.gameObject;
         if (other.CompareTag("Collectable"))
         {
             Collect(other.gameObject);
         }
-        else if (other.CompareTag("LidAdder")) {
-            var currentTransform = currentGameObject.transform;
-            Destroy(currentGameObject);
-            Instantiate(newLidGameObject, currentTransform);
+        else if (other.CompareTag("LidMaker")) {
+            this.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+            this.transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
         } else if (other.CompareTag("CoffeeAdder")) {
-            var currentTransform = currentGameObject.transform;
-            Destroy(currentGameObject);
-            Instantiate(newCoffeeAddedGameObject, currentTransform);
-        } else if (other.CompareTag("CoffeeFoamer")) {
-            var currentTransform = currentGameObject.transform;
-            Destroy(currentGameObject);
-            Instantiate(newCoffeeFoamedGameObject, currentTransform);
-        } else if (other.CompareTag("MilkAdder")) {
-            var currentTransform = currentGameObject.transform;
-            Destroy(currentGameObject);
-            Instantiate(newMilkAddedGameObject, currentTransform);
-        } else if (other.CompareTag("CremaCupGate")) {
-            var currentTransform = currentGameObject.transform;
-            Destroy(currentGameObject);
-            Instantiate(newCremaAddedGameObject, currentTransform);
-        } else if (other.CompareTag("SellGate")) {
+                this.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+        }else if (other.CompareTag("CremaFoam")) {
+            if(!this.transform.GetChild(0).GetChild(4).gameObject.activeInHierarchy)
+                this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);  //texture 1
+            else
+                this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true); //texture 2
+        } /*else if (other.CompareTag("SellGate")) {
             Vector3.MoveTowards(currentGameObject.transform.position, currentGameObject.transform.position + Vector3.right, 1f);
             Destroy(currentGameObject);
-        } else if (other.CompareTag("SleeveAdder")) {
-            var currentTransform = currentGameObject.transform;
-            Destroy(currentGameObject);
-            Instantiate(newSleevedGameObject, currentTransform);
+        } */else if (other.CompareTag("SleeveAdder")) {
+            this.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
         }
 
         ShowValue(other);
@@ -72,18 +58,14 @@ public class CollectController : MonoBehaviour
                                         other.transform.position,
                                         other.transform.rotation,
                                         NodeManager.Instance.Player);
-        valueText.SetActive(false);
         Destroy(valueText,1f);
-        switch (other.tag)
+        switch (tag)
         {
             case "LidDoor":
                 valueText.GetComponentInChildren<TextMeshProUGUI>().text = "$5";
-                valueText.SetActive(true);
                 break;
-            case "Collected":
+            case "Collectable":
                 valueText.GetComponentInChildren<TextMeshProUGUI>().text = other.GetComponent<NodeController>().glassValue.ToString();
-                Debug.Log(other.GetComponent<NodeController>().glassValue);
-                valueText.SetActive(true);
                 break;
             default:
                 break;
