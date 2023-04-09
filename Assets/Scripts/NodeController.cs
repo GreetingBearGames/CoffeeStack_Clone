@@ -74,9 +74,6 @@ public class NodeController : MonoBehaviour
             case "Collectable":
                 //Start metodunda hesaplandı.
                 break;
-            //Collide durumları ve değerleri için caseler burada olacak
-            
-
             
             default:
                 break;

@@ -54,7 +54,7 @@ public class CollectController : MonoBehaviour
                 valueText.SetActive(true);
                 break;
             case "Collected":
-                valueText.GetComponentInChildren<TextMeshProUGUI>().text = other.GetComponent<NodeController>().glassValue.ToString();
+                valueText.GetComponentInChildren<ValueController>().value = other.GetComponent<NodeController>().glassValue;
                 Debug.Log(other.GetComponent<NodeController>().glassValue);
                 valueText.SetActive(true);
                 break;

@@ -17,7 +17,7 @@ public class MovementController : MonoBehaviour, IDragHandler
         player.transform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime)); // Forward movement
         if (isFinished)
         {
-            player.transform.DOMoveX(0,1);
+            player.transform.DOMoveX(0,0.75f);
         }        
     }
 
@@ -29,10 +29,10 @@ public class MovementController : MonoBehaviour, IDragHandler
             float current = position.x;
             current += eventData.delta.x * horizontalSpeed;
 
-            if (current > 4.5) //Road Edges
-                current = 4.5f;
-            else if(current <-4.5)
-                current = -4.5f;
+            if (current > 3.7) //Road Edges
+                current = 3.7f;
+            else if(current <-3.7)
+                current = -3.7f;
 
             position = new Vector3(current,position.y,position.z);  
             player.position = position;

@@ -16,7 +16,4 @@ public class ValueController : MonoBehaviour
             }
     }
 
-    private void Start() {
-        value = 1;
-    }
 }
