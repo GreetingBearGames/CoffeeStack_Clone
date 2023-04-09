@@ -13,6 +13,10 @@ public class CollectController : MonoBehaviour
         {
             Collect(other.gameObject);
         }
+        else if (other.CompareTag("FinishLine"))
+        {
+            Destroy(this);
+        }
 
         ShowValue(other);
     }
