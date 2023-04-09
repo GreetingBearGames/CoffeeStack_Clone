@@ -17,8 +17,8 @@ public class MovementController : MonoBehaviour, IDragHandler
         player.transform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime)); // Forward movement
         if (isFinished)
         {
-            player.transform.DOMoveX(0,1);
-        }        
+            player.transform.DOMoveX(0, 1);
+        }
     }
 
     public void OnDrag(PointerEventData eventData) // Slide Movement
@@ -31,12 +31,20 @@ public class MovementController : MonoBehaviour, IDragHandler
 
             if (current > 4.5) //Road Edges
                 current = 4.5f;
-            else if(current <-4.5)
+            else if (current < -4.5)
                 current = -4.5f;
 
-            position = new Vector3(current,position.y,position.z);  
+            position = new Vector3(current, position.y, position.z);
             player.position = position;
         }
-        
-    }   
+
+    }
+
+
+    public void SpeedChanger(float speedRatio, float duration)
+    {
+        var newSpeedValue = movementSpeed * speedRatio;
+        // Tween a float called forwardSpeed to newSpeedValue in duration second
+        DOTween.To(() => movementSpeed, x => movementSpeed = x, newSpeedValue, duration);
+    }
 }

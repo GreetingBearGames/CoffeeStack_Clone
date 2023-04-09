@@ -22,8 +22,8 @@ public class FinishHandGrabber : MonoBehaviour
     {
         if (other.tag == "Collected" && !_isGrabbed)
         {
-            RemainedCupChecker(other.gameObject);
             CupGrabber(other.gameObject);
+            RemainedCupChecker(other.gameObject);
             StartCoroutine(FinishMoneyUISpawner(other.transform.position));
             OffsetMover();
             _isGrabbed = true;
@@ -31,22 +31,43 @@ public class FinishHandGrabber : MonoBehaviour
     }
 
 
-    private void RemainedCupChecker(GameObject grabbedCub)
-    {
-        var cupCount = grabbedCub.transform.parent.childCount - 1;      //o bardağı yok edeceği için 1 eksilttik.
 
-        if (cupCount == 0)
-        {
-            OtherHandsOffsetMover();
-        }
-    }
 
 
     private void CupGrabber(GameObject grabbedCub)
     {
-        grabbedCub.transform.parent = _movingPart;
+        var cupIndex = NodeManager.Instance.nodes.IndexOf(grabbedCub);
+        var grabCup = NodeManager.Instance.nodes[cupIndex];
+        Destroy(grabCup.GetComponent<NodeController>());
+        Destroy(grabCup.GetComponent<CollectController>());
+        //grabCup.GetComponent<BoxCollider>().isTrigger = true;
+
+
+        NodeManager.Instance.nodes.RemoveAt(cupIndex);
+
+
+        if (NodeManager.Instance.nodes.Count == 0)
+        {
+            NodeManager.Instance.lastNode = NodeManager.Instance.Player.transform;
+        }
+        else
+        {
+            NodeManager.Instance.lastNode = NodeManager.Instance.nodes[NodeManager.Instance.nodes.Count - 1].transform;
+        }
+
+        grabCup.transform.parent = _movingPart;
+
 
         //BURDA ELİN ANİMASYONUNU OYNATACAKSIN
+    }
+
+    private void RemainedCupChecker(GameObject grabbedCub)
+    {
+        var cupCount = NodeManager.Instance.nodes.Count;      //o bardağı yok edeceği için 1 eksilttik.
+        if (cupCount == 0)
+        {
+            OtherHandsOffsetMover();
+        }
     }
 
 
@@ -68,7 +89,7 @@ public class FinishHandGrabber : MonoBehaviour
     {
         var offset = 2f;
 
-        if (transform.parent.GetChild(1).transform.position.x < 0)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
+        if (transform.parent.parent.transform.localScale.x == -1)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
         {
             offset *= -1;
         }
@@ -90,7 +111,7 @@ public class FinishHandGrabber : MonoBehaviour
 
             var offset = 2f;
 
-            if (handMoveablePart.GetChild(1).transform.position.x < 0)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
+            if (handMoveablePart.parent.transform.localScale.x == -1)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
             {
                 offset *= -1;
             }

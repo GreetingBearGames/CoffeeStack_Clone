@@ -5,18 +5,17 @@ using UnityEngine;
 public class FinishHandStopper : MonoBehaviour
 {
     [SerializeField] private FinishHandRaise _finishHandRaise;
-    private AutoMove_Demo _autoMove_Demo;
+    [SerializeField] private MovementController movementController;
     private static bool isTriggeredonlyOnce = false;
 
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Hand" && !isTriggeredonlyOnce)
+        if (other.tag == "Player" && !isTriggeredonlyOnce)
         {
             isTriggeredonlyOnce = true;
-            _autoMove_Demo = GameObject.FindGameObjectWithTag("Player").GetComponent<AutoMove_Demo>();
-            _autoMove_Demo.SpeedChanger(0, 0.2f);
+            movementController.SpeedChanger(0, 0.2f);
 
             StartCoroutine("CameraMovement");
         }
@@ -29,6 +28,8 @@ public class FinishHandStopper : MonoBehaviour
         //KAMERAYI HAREKET ETTİR
         //KAMERA HAREKETİ BİTİNCE BİR MİKTAR SÜRE BEKLE
         _finishHandRaise.RaiseHandbyScore();
-        this.transform.parent.SetParent(_autoMove_Demo.gameObject.transform);   //böylece el ile beraber yükselebilecek
+        this.transform.parent.SetParent(GameObject.FindGameObjectWithTag("Player").gameObject.transform);   //böylece el ile beraber yükselebilecek
+
     }
+
 }

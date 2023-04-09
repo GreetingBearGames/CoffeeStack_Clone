@@ -16,7 +16,7 @@ public class EdgeHandPositioner : MonoBehaviour
     {
         if (edgeHandGrabber._isGrabbed == false)
         {
-            if (other.tag == "Hand")
+            if (other.tag == "Player")
             {
                 if ((Time.time - _savedTime) > _delay)
                 {

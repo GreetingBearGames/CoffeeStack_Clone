@@ -13,6 +13,11 @@ public class CollectController : MonoBehaviour
         {
             Collect(other.gameObject);
         }
+        if (other.CompareTag("FinishLine"))
+        {
+            NodeManager.Instance.MovePlayerToMid();
+        }
+
 
         ShowValue(other);
     }
@@ -36,13 +41,14 @@ public class CollectController : MonoBehaviour
         other.GetComponent<NodeController>().StartScaleAnimation();
     }
 
-    private void ShowValue(Collider other){
+    private void ShowValue(Collider other)
+    {
         GameObject valueText = Instantiate(NodeManager.Instance.showValuePrefab,
                                         other.transform.position,
                                         other.transform.rotation,
                                         NodeManager.Instance.Player);
         valueText.SetActive(false);
-        Destroy(valueText,1f);
+        Destroy(valueText, 1f);
         switch (other.tag)
         {
             case "LidDoor":

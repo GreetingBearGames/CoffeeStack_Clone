@@ -11,10 +11,10 @@ public class FinishLinePositioner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Hand" && !_isTriggered)
+        if (other.tag == "Player" && !_isTriggered)
         {
             var handParent = other.transform.parent;
-            handParent.DOMoveX(0, 0.3f);
+            //handParent.DOMoveX(0, 0.3f);
             RemainedCupChecker(other.gameObject);
         }
 
@@ -22,7 +22,7 @@ public class FinishLinePositioner : MonoBehaviour
         {
 
             var handParent = other.transform.parent.parent;
-            handParent.DOMoveX(0, 0.3f);
+            //handParent.DOMoveX(0, 0.3f);
         }
 
 
@@ -32,7 +32,8 @@ public class FinishLinePositioner : MonoBehaviour
 
     private void RemainedCupChecker(GameObject hand)
     {
-        var cupCount = hand.transform.parent.GetChild(4).childCount;
+        //var cupCount = hand.transform.parent.GetChild(4).childCount;
+        var cupCount = NodeManager.Instance.nodes.Count;
 
         if (cupCount == 0)
         {

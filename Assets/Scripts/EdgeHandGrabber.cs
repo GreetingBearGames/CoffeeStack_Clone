@@ -7,7 +7,7 @@ public class EdgeHandGrabber : MonoBehaviour
 {
     [HideInInspector] public bool _isGrabbed = false;
     private Transform _movingPart;
-    private AutoMove_Demo _autoMove_Demo;
+    [SerializeField] private MovementController movementController;
 
     private void Start()
     {
@@ -51,12 +51,11 @@ public class EdgeHandGrabber : MonoBehaviour
 
     IEnumerator PlayerSpeedChanger(float speedRatio, float decrasingDuration, float waitDuraton)
     {
-        _autoMove_Demo = GameObject.FindGameObjectWithTag("Player").GetComponent<AutoMove_Demo>();
-        _autoMove_Demo.SpeedChanger(speedRatio, decrasingDuration);
+        movementController.SpeedChanger(speedRatio, decrasingDuration);
 
         // tekrar hızı olması gereken değere getiriyoruz.
         yield return new WaitForSeconds(waitDuraton);
-        _autoMove_Demo.SpeedChanger(1 / speedRatio, 1f);
+        movementController.SpeedChanger(1 / speedRatio, 1f);
 
     }
 }
