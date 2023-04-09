@@ -7,15 +7,28 @@ public class CollectController : MonoBehaviour
 {
     public Transform lastOne;
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Collectable"))
         {
             Collect(other.gameObject);
         }
-        else if (other.CompareTag("FinishLine"))
-        {
-            Destroy(this);
+        else if (other.CompareTag("LidMaker")) {
+            this.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+            this.transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
+        } else if (other.CompareTag("CoffeeAdder")) {
+                this.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+        }else if (other.CompareTag("CremaFoam")) {
+            if(!this.transform.GetChild(0).GetChild(4).gameObject.activeInHierarchy)
+                this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);  //texture 1
+            else
+                this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true); //texture 2
+        } /*else if (other.CompareTag("SellGate")) {
+            Vector3.MoveTowards(currentGameObject.transform.position, currentGameObject.transform.position + Vector3.right, 1f);
+            Destroy(currentGameObject);
+        } */else if (other.CompareTag("SleeveAdder")) {
+            this.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
         }
 
         ShowValue(other);
@@ -45,18 +58,14 @@ public class CollectController : MonoBehaviour
                                         other.transform.position,
                                         other.transform.rotation,
                                         NodeManager.Instance.Player);
-        valueText.SetActive(false);
         Destroy(valueText,1f);
-        switch (other.tag)
+        switch (tag)
         {
             case "LidDoor":
                 valueText.GetComponentInChildren<TextMeshProUGUI>().text = "$5";
-                valueText.SetActive(true);
                 break;
-            case "Collected":
-                valueText.GetComponentInChildren<ValueController>().value = other.GetComponent<NodeController>().glassValue;
-                Debug.Log(other.GetComponent<NodeController>().glassValue);
-                valueText.SetActive(true);
+            case "Collectable":
+                valueText.GetComponentInChildren<TextMeshProUGUI>().text = other.GetComponent<NodeController>().glassValue.ToString();
                 break;
             default:
                 break;

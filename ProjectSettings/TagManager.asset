@@ -11,6 +11,11 @@ TagManager:
   - FinishMoneyTarget
   - ScoreTowerItem
   - Writable
+  - FinishLine
+  - CoffeeAdder
+  - LidMaker
+  - CremaFoam
+  - SleeveAdder
   layers:
   - Default
   - TransparentFX
