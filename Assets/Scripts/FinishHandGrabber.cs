@@ -57,7 +57,8 @@ public class FinishHandGrabber : MonoBehaviour
 
         grabCup.transform.parent = _movingPart;
 
-
+        var grabbingHandAnimCont = GameObject.FindGameObjectWithTag("GrabbingHand");
+        grabbingHandAnimCont.GetComponent<Animator>().SetBool("isGrabbing", true);
         //BURDA ELİN ANİMASYONUNU OYNATACAKSIN
     }
 
