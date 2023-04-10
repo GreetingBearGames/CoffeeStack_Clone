@@ -33,12 +33,7 @@ public class CollectController : MonoBehaviour
                 other.transform.GetChild(0).DOLocalMoveX(0.0135f, 0.5f);
             }
         }
-<<<<<<< HEAD
-
-        
-=======
-        ShowValue(other);
->>>>>>> Melih
+        ShowValue(other.gameObject);
     }
 
     private void Collect(GameObject other)
