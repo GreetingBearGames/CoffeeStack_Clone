@@ -42,6 +42,12 @@ public class FinishHandRaise : MonoBehaviour
     IEnumerator ShowHighScore(float waitDuration)
     {
         yield return new WaitForSeconds(waitDuration + 0.1f);      //elin durmasını bekle.
+
+        var playerAnimCont = GameObject.FindGameObjectWithTag("PlayerHandAnimController");
+        playerAnimCont.GetComponent<Animator>().SetBool("isThumbsUp", true);
+
+        yield return new WaitForSeconds(0.7f);      //okay işaretinin tamamlanmasını bekle.
+
         //KAMWERAYI HIGHSCORE SEVİYESİNE YÜKSELT.
         highScoreDisplayer.HighScoreItemFinder();
     }

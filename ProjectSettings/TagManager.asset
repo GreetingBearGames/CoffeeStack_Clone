@@ -11,6 +11,8 @@ TagManager:
   - FinishMoneyTarget
   - ScoreTowerItem
   - Writable
+  - FinishLine
+  - PlayerHandAnimController
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,8 @@ public class FinishHandStopper : MonoBehaviour
         {
             isTriggeredonlyOnce = true;
             movementController.SpeedChanger(0, 0.2f);
+            var playerAnimCont = GameObject.FindGameObjectWithTag("PlayerHandAnimController");
+            playerAnimCont.GetComponent<Animator>().SetBool("isMoneyHold", true);
 
             StartCoroutine("CameraMovement");
         }
@@ -28,7 +30,7 @@ public class FinishHandStopper : MonoBehaviour
         //KAMERAYI HAREKET ETTİR
         //KAMERA HAREKETİ BİTİNCE BİR MİKTAR SÜRE BEKLE
         _finishHandRaise.RaiseHandbyScore();
-        this.transform.parent.SetParent(GameObject.FindGameObjectWithTag("Player").gameObject.transform);   //böylece el ile beraber yükselebilecek
+        this.transform.parent.SetParent(GameObject.FindGameObjectWithTag("Player").gameObject.transform);   //böylece paraların el ile beraber yükselebilecek
 
     }
 
