@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class CollectController : MonoBehaviour
 {
@@ -14,23 +15,24 @@ public class CollectController : MonoBehaviour
         {
             Collect(other.gameObject);
         }
-        else if (other.CompareTag("LidMaker")) {
-            this.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
-            this.transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
-        } else if (other.CompareTag("CoffeeAdder")) {
-                this.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
-        }else if (other.CompareTag("CremaFoam")) {
-            if(!this.transform.GetChild(0).GetChild(4).gameObject.activeInHierarchy)
-                this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);  //texture 1
-            else
-                this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true); //texture 2
-        } /*else if (other.CompareTag("SellGate")) {
-            Vector3.MoveTowards(currentGameObject.transform.position, currentGameObject.transform.position + Vector3.right, 1f);
-            Destroy(currentGameObject);
-        } */else if (other.CompareTag("SleeveAdder")) {
-            this.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+        if(!this.gameObject.CompareTag("Player")){
+            if (other.CompareTag("LidMaker")) {
+                this.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+                this.transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
+            } else if (other.CompareTag("CoffeeAdder")) {
+                    this.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+            }else if (other.CompareTag("CremaFoam")) {
+                if(!this.transform.GetChild(0).GetChild(4).gameObject.activeInHierarchy)
+                    this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);  //texture 1
+                else
+                    this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true); //texture 2
+            }else if (other.CompareTag("SellGate")) {
+                //this.transform.DOLocalMoveX(); //Local move ve remove
+            }else if (other.CompareTag("SleeveAdder")) {
+                this.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+                other.transform.GetChild(0).DOLocalMoveX(0.0135f, 0.5f);
+            }
         }
-
         ShowValue(other);
     }
 

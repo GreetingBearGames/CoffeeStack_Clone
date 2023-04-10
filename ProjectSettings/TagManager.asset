@@ -16,6 +16,7 @@ TagManager:
   - LidMaker
   - CremaFoam
   - SleeveAdder
+  - SellGate
   layers:
   - Default
   - TransparentFX
