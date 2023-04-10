@@ -15,5 +15,6 @@ public class FinishMoneyUIMove : MonoBehaviour
     {
         var targetPos = GameObject.FindGameObjectWithTag("FinishMoneyTarget").transform.GetComponent<RectTransform>().localPosition;
         this.transform.GetComponent<RectTransform>().DOAnchorPos(targetPos, 1f);
+        Destroy(this.gameObject, 1.1f);
     }
 }

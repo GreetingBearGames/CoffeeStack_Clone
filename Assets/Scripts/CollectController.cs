@@ -33,6 +33,10 @@ public class CollectController : MonoBehaviour
                 other.transform.GetChild(0).DOLocalMoveX(0.0135f, 0.5f);
             }
         }
+	if (other.CompareTag("FinishLine"))
+        {
+            NodeManager.Instance.MovePlayerToMid();
+	}
         ShowValue(other.gameObject);
     }
 

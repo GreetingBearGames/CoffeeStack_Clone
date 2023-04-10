@@ -7,7 +7,7 @@ public class FinishCupSpreader : MonoBehaviour
 {
     [SerializeField] private Transform[] jumpPositions = new Transform[8];
     [SerializeField] private GameObject _finishMoneyPrefab;
-    [SerializeField] private float _jumpLift = 1.5f;
+    [SerializeField] private float _jumpLift = 3f;
     [SerializeField] private float _jumpDuration = 0.5f;
     private bool[] isPositionSuitable = new bool[8];
     private GameObject _gameCanvas;
@@ -24,8 +24,11 @@ public class FinishCupSpreader : MonoBehaviour
     {
         if (other.tag == "Collected")
         {
+            Destroy(other.GetComponent<NodeController>());
+            Destroy(other.GetComponent<CollectController>());
+            NodeManager.Instance.nodes.RemoveAt(NodeManager.Instance.nodes.IndexOf(other.gameObject));
             other.transform.SetParent(transform);           //el ile beraber hareket etmesin diye
-            other.GetComponent<CapsuleCollider>().isTrigger = true;     //üstüste gelebilsinler diye
+            other.GetComponent<BoxCollider>().isTrigger = true;     //üstüste gelebilsinler diye
             var rb = other.transform.GetComponent<Rigidbody>();
 
             for (int i = 0; i < isPositionSuitable.Length; i++)

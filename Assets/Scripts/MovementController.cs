@@ -17,7 +17,7 @@ public class MovementController : MonoBehaviour, IDragHandler
         player.transform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime)); // Forward movement
         if (isFinished)
         {
-            player.transform.DOMoveX(0,0.75f);
+            player.transform.DOMoveX(0,1);
         }        
     }
 

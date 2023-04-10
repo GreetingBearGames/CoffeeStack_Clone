@@ -17,6 +17,8 @@ TagManager:
   - CremaFoam
   - SleeveAdder
   - SellGate
+  - PlayerHandAnimController
+  - GrabbingHand
   layers:
   - Default
   - TransparentFX

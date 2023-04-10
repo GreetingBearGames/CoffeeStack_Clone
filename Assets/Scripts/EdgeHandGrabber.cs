@@ -7,7 +7,7 @@ public class EdgeHandGrabber : MonoBehaviour
 {
     [HideInInspector] public bool _isGrabbed = false;
     private Transform _movingPart;
-    private AutoMove_Demo _autoMove_Demo;
+    [SerializeField] private MovementController movementController;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class EdgeHandGrabber : MonoBehaviour
         {
             CupGrabber(other.gameObject);
             OffsetMover();
-            StartCoroutine(PlayerSpeedChanger(0.25f, 0.2f, 0.5f));
+            StartCoroutine(PlayerSpeedChanger(0.5f, 0.2f, 0.3f));
             _isGrabbed = true;
         }
     }
@@ -29,7 +29,30 @@ public class EdgeHandGrabber : MonoBehaviour
 
     private void CupGrabber(GameObject grabbedCub)
     {
-        grabbedCub.transform.parent = _movingPart;
+        var cupIndex = NodeManager.Instance.nodes.IndexOf(grabbedCub);
+        var grabCup = NodeManager.Instance.nodes[cupIndex];
+        Destroy(grabCup.GetComponent<NodeController>());
+        Destroy(grabCup.GetComponent<CollectController>());
+        //grabCup.GetComponent<BoxCollider>().isTrigger = true;
+
+
+        NodeManager.Instance.nodes.RemoveAt(cupIndex);
+
+
+        if (NodeManager.Instance.nodes.Count == 0)
+        {
+            NodeManager.Instance.lastNode = NodeManager.Instance.Player.transform;
+        }
+        else
+        {
+            NodeManager.Instance.lastNode = NodeManager.Instance.nodes[NodeManager.Instance.nodes.Count - 1].transform;
+        }
+
+        grabCup.transform.parent = _movingPart;
+
+        var grabbingHandAnimCont = GameObject.FindGameObjectWithTag("GrabbingHand");
+        grabbingHandAnimCont.GetComponent<Animator>().SetBool("isGrabbing", true);
+        grabCup.tag = "Collectable";
 
         //BURDA ELİN ANİMASYONUNU OYNATACAKSIN
     }
@@ -51,12 +74,11 @@ public class EdgeHandGrabber : MonoBehaviour
 
     IEnumerator PlayerSpeedChanger(float speedRatio, float decrasingDuration, float waitDuraton)
     {
-        _autoMove_Demo = GameObject.FindGameObjectWithTag("Player").GetComponent<AutoMove_Demo>();
-        _autoMove_Demo.SpeedChanger(speedRatio, decrasingDuration);
+        movementController.SpeedChanger(speedRatio, decrasingDuration);
 
         // tekrar hızı olması gereken değere getiriyoruz.
         yield return new WaitForSeconds(waitDuraton);
-        _autoMove_Demo.SpeedChanger(1 / speedRatio, 1f);
+        movementController.SpeedChanger(1 / speedRatio, 1f);
 
     }
 }
