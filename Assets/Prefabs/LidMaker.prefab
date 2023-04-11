@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 6263355183065511129}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: LidMaker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,7 +235,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6497147847311693965}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -1.28, y: -5.26, z: -40.61}
   m_LocalScale: {x: 5.576953, y: 5.576953, z: 5.576953}
   m_ConstrainProportionsScale: 0
