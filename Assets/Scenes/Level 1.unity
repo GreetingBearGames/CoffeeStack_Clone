@@ -6215,7 +6215,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378047541}
-  m_LocalRotation: {x: 0.31086653, y: 0.000000016353868, z: -0.000000005348889, w: 0.9504536}
+  m_LocalRotation: {x: 0.31086653, y: -0.000000016353868, z: 0.000000005348889, w: 0.9504536}
   m_LocalPosition: {x: 0, y: 6.91, z: -121.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11158,7 +11158,7 @@ GameObject:
   - component: {fileID: 618126890}
   m_Layer: 0
   m_Name: MoneyHolder
-  m_TagString: Untagged
+  m_TagString: FinishMoneyTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11336,7 +11336,7 @@ GameObject:
   - component: {fileID: 623244891}
   m_Layer: 0
   m_Name: GameUICanvas
-  m_TagString: Untagged
+  m_TagString: GameCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
