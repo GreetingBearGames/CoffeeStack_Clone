@@ -49,5 +49,10 @@ public class HighScoreDisplayer : MonoBehaviour
         highScoreItem.GetComponent<Image>().color = new Color32(254, 231, 12, 255);
         var value = highScoreItem.transform.GetChild(0).GetComponent<TextMeshPro>().text;
         highScoreItem.transform.GetChild(0).GetComponent<TextMeshPro>().text = "HIGHSCORE " + value;
+
+        CameraManager.Instance.finish3Cam.Follow = highScoreItem.transform;
+        CameraManager.Instance.finish3Cam.LookAt = highScoreItem.transform;
+        CameraManager.Instance.SwitchCamera(CameraManager.Instance.finish3Cam);
+
     }
 }

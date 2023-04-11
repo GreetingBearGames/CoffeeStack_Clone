@@ -16,6 +16,7 @@ public class FinishLinePositioner : MonoBehaviour
             var handParent = other.transform.parent;
             //handParent.DOMoveX(0, 0.3f);
             RemainedCupChecker(other.gameObject);
+            CameraManager.Instance.SwitchCamera(CameraManager.Instance.finish1Cam);
         }
 
         if (other.tag == "Collected" && !_isTriggered)
@@ -23,6 +24,7 @@ public class FinishLinePositioner : MonoBehaviour
 
             var handParent = other.transform.parent.parent;
             //handParent.DOMoveX(0, 0.3f);
+            CameraManager.Instance.SwitchCamera(CameraManager.Instance.finish1Cam);
         }
 
 
