@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class NodeController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class NodeController : MonoBehaviour
     private void Start()
     {
         valueController = NodeManager.Instance.valueController;
-        valueController.value += 2;
+        ShowValue(gameObject,glassValue);
     }
     void Update()
     {
@@ -43,7 +44,7 @@ public class NodeController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ValueChange(other);
+        ValueChange(other.gameObject);
     }
 
     public void StartScaleAnimation()
@@ -68,17 +69,49 @@ public class NodeController : MonoBehaviour
         }
     }
 
-    private void ValueChange(Collider other)
+    private void ValueChange(GameObject other)
     {
-
+        int value=0;
+        
+        Debug.Log(other.tag);
         switch (other.tag)
         {
-            case "Collectable":
-                //Start metodunda hesaplandı.
+            case "LidMaker":
+                value = 2;
+                ShowValue(other,value);
                 break;
-            
+            case "CremaFoam":
+                value = 4;
+                ShowValue(other,value);
+                break;
+            case "CoffeeAdder":
+                value = 7;
+                ShowValue(other,value);
+                break;
+            case "SleeveAdder":
+                value = 3;
+                ShowValue(other,value);
+                break;
+
+                
             default:
                 break;
         }
+
+
+        glassValue+=value;
+    }
+
+    public void ShowValue(GameObject other,int value){
+        GameObject valueText = Instantiate(NodeManager.Instance.showValuePrefab,
+                                        transform.position,
+                                        transform.rotation,
+                                        NodeManager.Instance.Player);  
+        Destroy(valueText,1f); 
+        valueText.GetComponentInChildren<TextMeshProUGUI>().text = "$" + value.ToString();
+
+        GameManager.Instance.UpdateMoney(value);
+        NodeManager.Instance.valueController.value+=value;
+
     }
 }

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     private float _levelStartScore;
     private static GameManager _instance;   //Create instance and make it static to be sure that only one instance exist in scene.
     [SerializeField] private GameObject _gameFinishUI, _gameOverUI;
+    [SerializeField] private TMP_Text gameUIMoneyText;
 
 
     public static GameManager Instance
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        gameUIMoneyText.text = Money.ToString();
     }
 
     public void UpdateMoney(int updateAmount)
@@ -39,6 +42,8 @@ public class GameManager : MonoBehaviour
         {                           //To make sure that money is above 0.
             Money = 0;
         }
+
+        gameUIMoneyText.text=Money.ToString();
     }
 
     public float LevelStartScore
