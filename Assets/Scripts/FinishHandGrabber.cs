@@ -6,6 +6,7 @@ using DG.Tweening;
 public class FinishHandGrabber : MonoBehaviour
 {
     [SerializeField] private GameObject _finishMoneyPrefab;
+    [SerializeField] private int moneyIncreaseConstant;
     private GameObject _gameCanvas;
     private bool _isGrabbed = false;
     private Transform _movingPart;
@@ -26,6 +27,7 @@ public class FinishHandGrabber : MonoBehaviour
             RemainedCupChecker(other.gameObject);
             StartCoroutine(FinishMoneyUISpawner(other.transform.position));
             OffsetMover();
+            ScoreIncreaser();
             _isGrabbed = true;
         }
     }
@@ -123,6 +125,12 @@ public class FinishHandGrabber : MonoBehaviour
 
             nextChildNumber++;
         }
+    }
+
+    private void ScoreIncreaser()
+    {
+        GameManager.Instance.UpdateMoney(moneyIncreaseConstant);
+        NodeManager.Instance.valueController.value += moneyIncreaseConstant;
     }
 
 

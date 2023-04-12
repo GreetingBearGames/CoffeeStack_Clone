@@ -55,7 +55,7 @@ public class FinishLinePositioner : MonoBehaviour
 
             var offset = 2f;
 
-            if (handMoveablePart.GetChild(1).transform.position.x < 0)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
+            if (handMoveablePart.GetChild(0).transform.position.x > 0)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
             {
                 offset *= -1;
             }

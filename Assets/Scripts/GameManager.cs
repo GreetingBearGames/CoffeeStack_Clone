@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private float _levelStartScore;
+    private int _levelStartScore = 0;
     private static GameManager _instance;   //Create instance and make it static to be sure that only one instance exist in scene.
     [SerializeField] private GameObject _gameFinishUI, _gameOverUI;
     [SerializeField] private TMP_Text gameUIMoneyText;
@@ -50,15 +50,15 @@ public class GameManager : MonoBehaviour
             Money = 0;
         }
 
-        if (Money - LevelStartScore > HighScore)
+        if (Money - LevelStartScore >= HighScore)
         {
-            HighScore = Money;
+            HighScore = Money - LevelStartScore;
         }
 
         gameUIMoneyText.text = Money.ToString();
     }
 
-    public float LevelStartScore
+    public int LevelStartScore
     {
         get => _levelStartScore;
         set => _levelStartScore = value;
@@ -67,13 +67,15 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0){
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
             SceneManager.LoadScene(1);
         }
-        else{
+        else
+        {
             SceneManager.LoadScene(0);
         }
-        
+
     }
     public void LoseLevel()
     {

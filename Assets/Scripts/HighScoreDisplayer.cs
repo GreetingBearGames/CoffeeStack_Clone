@@ -34,8 +34,8 @@ public class HighScoreDisplayer : MonoBehaviour
         highScore = GameManager.Instance.HighScore;
 
 
-        var remainHighScore = highScore % 5;
-        if (levelScore < highScore - remainHighScore)
+        var remainHighScore = highScore % 5;        //mod5
+        if (levelScore <= highScore)
         {
             for (int i = scoreTower.childCount - 1; i > 0; i--)
             {
@@ -52,7 +52,7 @@ public class HighScoreDisplayer : MonoBehaviour
     {
         highScoreItem.GetComponent<Image>().color = new Color32(254, 231, 12, 255);
         var value = highScoreItem.transform.GetChild(0).GetComponent<TextMeshPro>().text;
-        highScoreItem.transform.GetChild(0).GetComponent<TextMeshPro>().text = "HIGHSCORE " + value;
+        highScoreItem.transform.GetChild(0).GetComponent<TextMeshPro>().text = "HIGHSCORE " + highScore;
 
         CameraManager.Instance.finish3Cam.Follow = highScoreItem.transform;
         CameraManager.Instance.finish3Cam.LookAt = highScoreItem.transform;
