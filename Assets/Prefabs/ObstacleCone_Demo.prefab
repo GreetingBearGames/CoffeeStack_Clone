@@ -112,5 +112,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpLift: 2
   _jumpDuration: 0.4
-  _jumpOffset: 4
+  _jumpOffset: 5
   _dustParticle: {fileID: 5279883487100392384, guid: 71be1a84ecd887742a3cd48ad6af7b07, type: 3}

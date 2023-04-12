@@ -7,6 +7,7 @@ public class FinishHandGrabber : MonoBehaviour
 {
     [SerializeField] private GameObject _finishMoneyPrefab;
     [SerializeField] private int moneyIncreaseConstant;
+    [SerializeField] private GameObject grabParticle;
     private GameObject _gameCanvas;
     private bool _isGrabbed = false;
     private Transform _movingPart;
@@ -58,10 +59,13 @@ public class FinishHandGrabber : MonoBehaviour
         }
 
         grabCup.transform.parent = _movingPart;
+        grabCup.transform.position = transform.TransformPoint(GetComponent<BoxCollider>().center);
 
         var grabbingHandAnimCont = GameObject.FindGameObjectWithTag("GrabbingHand");
         grabbingHandAnimCont.GetComponent<Animator>().SetBool("isGrabbing", true);
-        //BURDA ELİN ANİMASYONUNU OYNATACAKSIN
+
+
+        Instantiate(grabParticle, grabbedCub.transform.position, Quaternion.identity);
     }
 
     private void RemainedCupChecker(GameObject grabbedCub)

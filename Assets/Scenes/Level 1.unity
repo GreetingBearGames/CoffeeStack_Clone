@@ -6338,6 +6338,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 6bf5ace2f838a4a11ba5f34d0f58cf5d, type: 2}
     - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
+      propertyPath: grabParticle
+      value: 
+      objectReference: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
+    - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
       propertyPath: moneyIncreaseConstant
       value: 5
       objectReference: {fileID: 0}
@@ -6925,6 +6929,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
+      propertyPath: grabParticle
+      value: 
+      objectReference: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
     - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
       propertyPath: moneyIncreaseConstant
       value: 1
@@ -10700,6 +10708,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 24ebf8b678da049eaafd2d4b4aa81bdf, type: 2}
     - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
+      propertyPath: grabParticle
+      value: 
+      objectReference: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
+    - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
       propertyPath: moneyIncreaseConstant
       value: 20
       objectReference: {fileID: 0}
@@ -11905,6 +11917,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cc9b506493049479cb7d6eb236334bcd, type: 2}
+    - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
+      propertyPath: grabParticle
+      value: 
+      objectReference: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
     - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
       propertyPath: moneyIncreaseConstant
       value: 3
@@ -16093,6 +16109,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a3958d3d0d5304426b8f19f2deceda10, type: 2}
+    - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
+      propertyPath: grabParticle
+      value: 
+      objectReference: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
     - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
       propertyPath: moneyIncreaseConstant
       value: 7
@@ -22740,6 +22760,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 6bf5ace2f838a4a11ba5f34d0f58cf5d, type: 2}
     - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
+      propertyPath: grabParticle
+      value: 
+      objectReference: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
+    - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
       propertyPath: moneyIncreaseConstant
       value: 15
       objectReference: {fileID: 0}
@@ -29174,6 +29198,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: cc9b506493049479cb7d6eb236334bcd, type: 2}
     - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
+      propertyPath: grabParticle
+      value: 
+      objectReference: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
+    - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
       propertyPath: moneyIncreaseConstant
       value: 12
       objectReference: {fileID: 0}
@@ -31125,6 +31153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinishGrappingHand (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
+      propertyPath: grabParticle
+      value: 
+      objectReference: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
     - target: {fileID: 7997801936978411717, guid: 8dd978510c07a46a591ce3746461774a, type: 3}
       propertyPath: moneyIncreaseConstant
       value: 10

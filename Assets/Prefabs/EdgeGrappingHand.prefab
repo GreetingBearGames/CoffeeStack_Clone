@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba979be58cc5740a1bd178d804fdb02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  edgeHandGrabber: {fileID: 0}
+  edgeHandGrabber: {fileID: 5660466284311669687}
 --- !u!1 &752861072068227565
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +462,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 752861070626708008}
     m_Modifications:
+    - target: {fileID: 140554245366331842, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e606d874721646c99ca950233207fbd, type: 2}
+    - target: {fileID: 140554245366331842, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 057fdeb7a8c044be8833fc2ac729347b, type: 2}
+    - target: {fileID: 140554245366331842, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -6647517680343959698, guid: bcc44d9dda980463e900ae2f51f50c93, type: 3}
     - target: {fileID: 3707364033592082188, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -510,6 +522,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: omuzluel
       objectReference: {fileID: 0}
+    - target: {fileID: 4742387286945900440, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 513844c5d60374a23819616ce5d0b5d7, type: 2}
+    - target: {fileID: 8986183504159864148, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -6922793697723135513, guid: 4918ad107e0844bde9df39928715fc76, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
 --- !u!1 &1304141199261101413 stripped
@@ -544,6 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isGrabbed: 0
   movementController: {fileID: 0}
+  grabParticle: {fileID: 5146113068194687542, guid: c85237cdd07b5425389565876a4fb4b3, type: 3}
 --- !u!4 &1824781582143633375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3707364033592082188, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
