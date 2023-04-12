@@ -43,7 +43,8 @@ public class Paintable : MonoBehaviour {
         texture2D.Apply();
         foreach(var cup in GameObject.FindGameObjectsWithTag("Collectable")){
             cup.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().material.SetTexture("_MainTex", texture2D);
-            cup.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(0.33f, 0.03f));
+            cup.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(1f, 0.8f));
+            cup.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().material.SetTextureScale("_MainTex", new Vector2(-3,-6));
         }
         startMenuUI.SetActive(true);
         drawGameUI.SetActive(false);

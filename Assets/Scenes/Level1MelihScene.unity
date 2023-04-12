@@ -1184,6 +1184,7 @@ MonoBehaviour:
   inGameCamera: {fileID: 1601412835}
   finish1Cam: {fileID: 239211997}
   finish2Cam: {fileID: 472165759}
+  finish3Cam: {fileID: 0}
   startCam: {fileID: 1601412835}
 --- !u!1001 &62878806
 PrefabInstance:
