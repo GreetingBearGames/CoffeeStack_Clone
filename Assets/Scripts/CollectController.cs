@@ -16,18 +16,26 @@ public class CollectController : MonoBehaviour
             SoundManager.instance.Play("CupCollect");
             Collect(other.gameObject);
         }
-        if(!this.gameObject.CompareTag("Player")){
-            if (other.CompareTag("LidMaker")) {
+        if (!this.gameObject.CompareTag("Player"))
+        {
+            if (other.CompareTag("LidMaker"))
+            {
                 SoundManager.instance.Play("CupLevelUp");
                 this.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
                 this.transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
-            } else if (other.CompareTag("CoffeeAdder")) {
+            }
+            else if (other.CompareTag("CoffeeAdder"))
+            {
                 SoundManager.instance.Play("CoffeeFill");
-                    this.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
-            }else if (other.CompareTag("CremaFoam")) {
+                this.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+            }
+            else if (other.CompareTag("CremaFoam"))
+            {
                 SoundManager.instance.Play("CupLevelUp");
                 this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
-            }else if (other.CompareTag("SellGate")) {
+            }
+            else if (other.CompareTag("SellGate"))
+            {
                 var cupIndex = NodeManager.Instance.nodes.IndexOf(this.gameObject);
                 var grabCup = NodeManager.Instance.nodes[cupIndex];
                 Destroy(grabCup.GetComponent<NodeController>());
@@ -50,6 +58,7 @@ public class CollectController : MonoBehaviour
                 //this.transform.DOLocalMoveY(this.transform.position.y + 0.5f, 0.2f);
                 //});
                 other.transform.GetChild(0).DOLocalMoveX(0.0135f, 0.5f);
+                SoundManager.instance.Play("CupLevelUp");
             }
         }
         if (other.CompareTag("FinishLine"))
