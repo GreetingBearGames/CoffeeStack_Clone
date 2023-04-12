@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class FinishHandRaise : MonoBehaviour
 {
@@ -51,5 +52,8 @@ public class FinishHandRaise : MonoBehaviour
 
         //KAMWERAYI HIGHSCORE SEVİYESİNE YÜKSELT.
         highScoreDisplayer.HighScoreItemFinder();
+
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

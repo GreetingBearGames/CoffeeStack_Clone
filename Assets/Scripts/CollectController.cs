@@ -42,19 +42,20 @@ public class CollectController : MonoBehaviour
                     NodeManager.Instance.lastNode = NodeManager.Instance.nodes[NodeManager.Instance.nodes.Count - 1].transform;
                 }
                 this.transform.DOLocalMoveX(5.5f, 0.5f);
-            }else if (other.CompareTag("SleeveAdder")) {
-                SoundManager.instance.Play("CupLevelUp");
+            }
+            else if (other.CompareTag("SleeveAdder"))
+            {
                 this.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
-                this.transform.DOLocalMoveY(this.transform.position.y - 0.5f, 0.2f).OnComplete(() =>{
-                    this.transform.DOLocalMoveY(this.transform.position.y + 0.5f, 0.2f);
-                });
+                //this.transform.DOLocalMoveY(this.transform.position.y - 0.5f, 0.2f).OnComplete(() =>{
+                //this.transform.DOLocalMoveY(this.transform.position.y + 0.5f, 0.2f);
+                //});
                 other.transform.GetChild(0).DOLocalMoveX(0.0135f, 0.5f);
             }
         }
-	if (other.CompareTag("FinishLine"))
+        if (other.CompareTag("FinishLine"))
         {
             NodeManager.Instance.MovePlayerToMid();
-	}
+        }
 
     }
 
@@ -69,17 +70,18 @@ public class CollectController : MonoBehaviour
         }
         other.AddComponent<NodeController>().connectedNode = lastOne.transform;
         other.AddComponent<CollectController>();
-        
+
 
         NodeManager.Instance.lastNode = other.gameObject.transform;
         NodeManager.Instance.nodes.Add(other);
 
-        
+
         other.GetComponent<BoxCollider>().isTrigger = false;
         other.GetComponent<NodeController>().StartScaleAnimation();
     }
 
-    private void ShowValue(GameObject other){
+    private void ShowValue(GameObject other)
+    {
 
     }
 
