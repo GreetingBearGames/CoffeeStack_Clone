@@ -50,11 +50,12 @@ public class CollectController : MonoBehaviour
         {
             NodeManager.Instance.MovePlayerToMid();
 	}
-        ShowValue(other.gameObject);
+
     }
 
     private void Collect(GameObject other)
     {
+        other.tag = "Collected";
         lastOne = NodeManager.Instance.lastNode;
         other.transform.position = lastOne.transform.position + Vector3.forward;
         if (NodeManager.Instance.nodes.Count == 0)
@@ -63,38 +64,17 @@ public class CollectController : MonoBehaviour
         }
         other.AddComponent<NodeController>().connectedNode = lastOne.transform;
         other.AddComponent<CollectController>();
-        ShowValue(other);
+        
 
         NodeManager.Instance.lastNode = other.gameObject.transform;
         NodeManager.Instance.nodes.Add(other);
 
-        other.tag = "Collected";
+        
         other.GetComponent<BoxCollider>().isTrigger = false;
         other.GetComponent<NodeController>().StartScaleAnimation();
     }
 
     private void ShowValue(GameObject other){
-        GameObject valueText = Instantiate(NodeManager.Instance.showValuePrefab,
-                                        other.transform.position,
-                                        other.transform.rotation,
-                                        NodeManager.Instance.Player);
-        Destroy(valueText,1f);
-        Debug.Log(other.tag);
-        switch (other.tag)
-        {
-            case "LidDoor":
-                valueText.GetComponentInChildren<TextMeshProUGUI>().text = "$5";
-                break;
-            case "Collectable":
-                valueText.GetComponentInChildren<TextMeshProUGUI>().text = "$" + other.GetComponent<NodeController>().glassValue.ToString();
-                break;
-            case "Player":
-                Destroy(valueText);
-                break;
-                
-            default:
-                break;
-        }
 
     }
 

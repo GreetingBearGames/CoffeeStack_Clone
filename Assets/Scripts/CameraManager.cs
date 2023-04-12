@@ -6,7 +6,7 @@ using Cinemachine;
 public class CameraManager : MonoBehaviour
 {
     public CinemachineVirtualCamera[] cameras;
-    public CinemachineVirtualCamera inGameCamera, finish1Cam, finish2Cam, startCam;
+    public CinemachineVirtualCamera inGameCamera, finish1Cam, finish2Cam, finish3Cam, startCam;
     private CinemachineVirtualCamera currentCam;
     private static CameraManager _instance;
     public static CameraManager Instance
@@ -24,22 +24,29 @@ public class CameraManager : MonoBehaviour
     {
         _instance = this;
     }
-    private void Start() {
+    private void Start()
+    {
         currentCam = startCam;
-        for(int i = 0; i < cameras.Length; i++){
-            if(cameras[i] == currentCam){
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            if (cameras[i] == currentCam)
+            {
                 cameras[i].Priority = 20;
             }
-            else{
+            else
+            {
                 cameras[i].Priority = 10;
             }
         }
     }
-    public void SwitchCamera(CinemachineVirtualCamera newCam){
+    public void SwitchCamera(CinemachineVirtualCamera newCam)
+    {
         currentCam = newCam;
-        currentCam.Priority=20;
-        for(int i = 0; i < cameras.Length; i++){
-            if(cameras[i] != currentCam){
+        currentCam.Priority = 20;
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            if (cameras[i] != currentCam)
+            {
                 cameras[i].Priority = 10;
             }
         }

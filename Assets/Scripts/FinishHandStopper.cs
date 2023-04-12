@@ -26,6 +26,7 @@ public class FinishHandStopper : MonoBehaviour
 
     IEnumerator CameraMovement()
     {
+        CameraManager.Instance.SwitchCamera(CameraManager.Instance.finish2Cam);
         yield return new WaitForSeconds(1);
         //KAMERAYI HAREKET ETTİR
         //KAMERA HAREKETİ BİTİNCE BİR MİKTAR SÜRE BEKLE

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class HighScoreDisplayer : MonoBehaviour
 {
-    [SerializeField] private float score, highScore;
+    private float levelScore, highScore;
     [SerializeField] private float[] scoreTowerValues;
     [SerializeField] private Transform scoreTower;
 
@@ -30,8 +30,12 @@ public class HighScoreDisplayer : MonoBehaviour
 
     public void HighScoreItemFinder()
     {
-        var remainHighScore = highScore % 5;
-        if (score < highScore - remainHighScore)
+        levelScore = GameManager.Instance.Money - GameManager.Instance.LevelStartScore;
+        highScore = GameManager.Instance.HighScore;
+
+
+        var remainHighScore = highScore % 5;        //mod5
+        if (levelScore <= highScore)
         {
             for (int i = scoreTower.childCount - 1; i > 0; i--)
             {
@@ -48,6 +52,11 @@ public class HighScoreDisplayer : MonoBehaviour
     {
         highScoreItem.GetComponent<Image>().color = new Color32(254, 231, 12, 255);
         var value = highScoreItem.transform.GetChild(0).GetComponent<TextMeshPro>().text;
-        highScoreItem.transform.GetChild(0).GetComponent<TextMeshPro>().text = "HIGHSCORE " + value;
+        highScoreItem.transform.GetChild(0).GetComponent<TextMeshPro>().text = "HIGHSCORE " + highScore;
+
+        CameraManager.Instance.finish3Cam.Follow = highScoreItem.transform;
+        CameraManager.Instance.finish3Cam.LookAt = highScoreItem.transform;
+        CameraManager.Instance.SwitchCamera(CameraManager.Instance.finish3Cam);
+
     }
 }

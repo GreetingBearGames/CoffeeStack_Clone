@@ -200,6 +200,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4091878661661293597}
     m_Modifications:
+    - target: {fileID: 140554245366331842, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e606d874721646c99ca950233207fbd, type: 2}
+    - target: {fileID: 140554245366331842, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 057fdeb7a8c044be8833fc2ac729347b, type: 2}
+    - target: {fileID: 140554245366331842, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf52ce27bc0b84fc2a998e25c2c50969, type: 2}
     - target: {fileID: 3707364033592082188, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -248,6 +260,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: omuzluel
       objectReference: {fileID: 0}
+    - target: {fileID: 4742387286945900440, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 513844c5d60374a23819616ce5d0b5d7, type: 2}
+    - target: {fileID: 8986183504159864148, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0521ea0ef8eff4f9092f62d5c0947fa5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c1f97dbf88154570982f86ec1864b71, type: 3}
 --- !u!4 &1211108388732755999 stripped

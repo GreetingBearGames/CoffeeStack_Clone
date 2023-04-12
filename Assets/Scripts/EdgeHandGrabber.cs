@@ -8,6 +8,7 @@ public class EdgeHandGrabber : MonoBehaviour
     [HideInInspector] public bool _isGrabbed = false;
     private Transform _movingPart;
     [SerializeField] private MovementController movementController;
+    [SerializeField] private GameObject grabParticle;
 
     private void Start()
     {
@@ -49,12 +50,13 @@ public class EdgeHandGrabber : MonoBehaviour
         }
 
         grabCup.transform.parent = _movingPart;
+        grabCup.transform.position = transform.TransformPoint(GetComponent<BoxCollider>().center);
 
         var grabbingHandAnimCont = GameObject.FindGameObjectWithTag("GrabbingHand");
         grabbingHandAnimCont.GetComponent<Animator>().SetBool("isGrabbing", true);
         grabCup.tag = "Collectable";
 
-        //BURDA ELİN ANİMASYONUNU OYNATACAKSIN
+        Instantiate(grabParticle, grabbedCub.transform.position, Quaternion.identity);
     }
 
 

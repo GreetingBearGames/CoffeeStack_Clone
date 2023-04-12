@@ -41,7 +41,6 @@ public class ObstacleCupThrower : MonoBehaviour
                                         thrownCup.transform.position.y,
                                         thrownCup.transform.position.z + _jumpOffset + Random.Range(0, 5f));
 
-            rb.transform.DOJump(dropPos, _jumpLift, 1, _jumpDuration);
 
             thrownCup.tag = "Collectable";
             NodeManager.Instance.nodes.RemoveAt(cupIndex);
@@ -55,6 +54,9 @@ public class ObstacleCupThrower : MonoBehaviour
             {
                 NodeManager.Instance.lastNode = NodeManager.Instance.nodes[NodeManager.Instance.nodes.Count - 1].transform;
             }
+
+            rb.transform.DOJump(dropPos, _jumpLift, 1, _jumpDuration);
+
         }
     }
 

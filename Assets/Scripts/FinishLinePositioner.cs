@@ -16,6 +16,7 @@ public class FinishLinePositioner : MonoBehaviour
             var handParent = other.transform.parent;
             //handParent.DOMoveX(0, 0.3f);
             RemainedCupChecker(other.gameObject);
+            CameraManager.Instance.SwitchCamera(CameraManager.Instance.finish1Cam);
         }
 
         if (other.tag == "Collected" && !_isTriggered)
@@ -23,6 +24,7 @@ public class FinishLinePositioner : MonoBehaviour
 
             var handParent = other.transform.parent.parent;
             //handParent.DOMoveX(0, 0.3f);
+            CameraManager.Instance.SwitchCamera(CameraManager.Instance.finish1Cam);
         }
 
 
@@ -53,7 +55,7 @@ public class FinishLinePositioner : MonoBehaviour
 
             var offset = 2f;
 
-            if (handMoveablePart.GetChild(1).transform.position.x < 0)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
+            if (handMoveablePart.GetChild(0).transform.position.x > 0)      //Sol tarafta duran el mi yoksa sağ tarafta duran el mi anlamak için.
             {
                 offset *= -1;
             }
