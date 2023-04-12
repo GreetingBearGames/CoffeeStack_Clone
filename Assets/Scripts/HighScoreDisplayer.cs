@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class HighScoreDisplayer : MonoBehaviour
 {
-    [SerializeField] private float score, highScore;
+    private float levelScore, highScore;
     [SerializeField] private float[] scoreTowerValues;
     [SerializeField] private Transform scoreTower;
 
@@ -30,8 +30,12 @@ public class HighScoreDisplayer : MonoBehaviour
 
     public void HighScoreItemFinder()
     {
+        levelScore = GameManager.Instance.Money - GameManager.Instance.LevelStartScore;
+        highScore = GameManager.Instance.HighScore;
+
+
         var remainHighScore = highScore % 5;
-        if (score < highScore - remainHighScore)
+        if (levelScore < highScore - remainHighScore)
         {
             for (int i = scoreTower.childCount - 1; i > 0; i--)
             {

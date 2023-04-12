@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class FinishHandRaise : MonoBehaviour
 {
-    [SerializeField] private float score;
+    private float levelScore;
     [SerializeField] private HighScoreDisplayer highScoreDisplayer;
     private GameObject finishTowerUIParent;
 
@@ -15,9 +15,10 @@ public class FinishHandRaise : MonoBehaviour
 
     public void RaiseHandbyScore()
     {
-        var height = 0.5f + (score / 5) * 0.75f;    //0.5f güvenlik önlemi. score/5: 5'er 5'er ilerlemesinden geliyor. 0.75f her bir birim yüksekliği
-        transform.DOMoveY(height, score / 30);
-        StartCoroutine(ShowHighScore(score / 30));
+        levelScore = GameManager.Instance.Money - GameManager.Instance.LevelStartScore;
+        var height = 0.5f + (levelScore / 5) * 0.75f;    //0.5f güvenlik önlemi. score/5: 5'er 5'er ilerlemesinden geliyor. 0.75f her bir birim yüksekliği
+        transform.DOMoveY(height, levelScore / 30);
+        StartCoroutine(ShowHighScore(levelScore / 30));
     }
 
 

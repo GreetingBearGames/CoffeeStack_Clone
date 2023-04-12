@@ -29,10 +29,17 @@ public class GameManager : MonoBehaviour
         private set => PlayerPrefs.SetInt("Money", value);
     }
 
+    public int HighScore
+    {       //HighScore property. You can get highscore from outside this script, but you can only set in this script.
+        get => PlayerPrefs.GetInt("HighScore", 0);
+        private set => PlayerPrefs.SetInt("HighScore", value);
+    }
+
     private void Awake()
     {
         _instance = this;
         gameUIMoneyText.text = Money.ToString();
+        LevelStartScore = Money;
     }
 
     public void UpdateMoney(int updateAmount)
@@ -43,7 +50,12 @@ public class GameManager : MonoBehaviour
             Money = 0;
         }
 
-        gameUIMoneyText.text=Money.ToString();
+        if (Money - LevelStartScore > HighScore)
+        {
+            HighScore = Money;
+        }
+
+        gameUIMoneyText.text = Money.ToString();
     }
 
     public float LevelStartScore
