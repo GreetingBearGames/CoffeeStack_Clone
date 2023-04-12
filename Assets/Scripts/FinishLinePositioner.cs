@@ -36,7 +36,7 @@ public class FinishLinePositioner : MonoBehaviour
     {
         //var cupCount = hand.transform.parent.GetChild(4).childCount;
         var cupCount = NodeManager.Instance.nodes.Count;
-
+        Debug.Log(cupCount);
         if (cupCount == 0)
         {
             OtherHandsOffsetMover(hand);
