@@ -77,3 +77,11 @@ MonoBehaviour:
     hasCooldown: 0
     source: {fileID: 0}
     playOnAwake: 0
+  - name: Obstacle
+    clip: {fileID: 8300000, guid: 8b693ace3114c4c4194db54da9a32d8e, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    hasCooldown: 0
+    source: {fileID: 0}
+    playOnAwake: 0

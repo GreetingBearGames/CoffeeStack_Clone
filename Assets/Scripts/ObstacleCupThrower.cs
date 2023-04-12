@@ -16,6 +16,7 @@ public class ObstacleCupThrower : MonoBehaviour
     {
         if (other.tag == "Collected")
         {
+            SoundManager.instance.Play("Obstacle");
             ThrowCups(other.gameObject);
             DustParticleSpawner();
             isTriggered = true;
