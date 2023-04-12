@@ -11,6 +11,8 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] GameObject gameUICanvas;
     [SerializeField] GameObject leftButtonsGroup;
     [SerializeField] Transform leftGroupFinalPosition;
+    [SerializeField] GameObject drawUI;
+
 
     void Update()
     {
@@ -33,6 +35,9 @@ public class MenuUIController : MonoBehaviour
         shopCanvas.SetActive(false);
         gameObject.SetActive(true);
     }
-
+    public void DrawNameButton(){
+        drawUI.SetActive(true);
+        gameObject.SetActive(false);
+    }
 
 }

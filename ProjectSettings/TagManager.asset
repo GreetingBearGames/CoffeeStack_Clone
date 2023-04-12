@@ -19,6 +19,9 @@ TagManager:
   - SellGate
   - PlayerHandAnimController
   - GrabbingHand
+  - DrawUI
+  - FlowingCoffee
+  - Brush
   layers:
   - Default
   - TransparentFX

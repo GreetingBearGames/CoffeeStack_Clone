@@ -22,14 +22,27 @@ public class CollectController : MonoBehaviour
             } else if (other.CompareTag("CoffeeAdder")) {
                     this.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
             }else if (other.CompareTag("CremaFoam")) {
-                if(!this.transform.GetChild(0).GetChild(4).gameObject.activeInHierarchy)
-                    this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);  //texture 1
-                else
-                    this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true); //texture 2
+                this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
             }else if (other.CompareTag("SellGate")) {
-                //this.transform.DOLocalMoveX(); //Local move ve remove
+                var cupIndex = NodeManager.Instance.nodes.IndexOf(this.gameObject);
+                var grabCup = NodeManager.Instance.nodes[cupIndex];
+                Destroy(grabCup.GetComponent<NodeController>());
+                Destroy(grabCup.GetComponent<CollectController>());
+                NodeManager.Instance.nodes.RemoveAt(cupIndex);
+                if (NodeManager.Instance.nodes.Count == 0)
+                {
+                    NodeManager.Instance.lastNode = NodeManager.Instance.Player.transform;
+                }
+                else
+                {
+                    NodeManager.Instance.lastNode = NodeManager.Instance.nodes[NodeManager.Instance.nodes.Count - 1].transform;
+                }
+                this.transform.DOLocalMoveX(5.5f, 0.5f);
             }else if (other.CompareTag("SleeveAdder")) {
                 this.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+                this.transform.DOLocalMoveY(this.transform.position.y - 0.5f, 0.2f).OnComplete(() =>{
+                    this.transform.DOLocalMoveY(this.transform.position.y + 0.5f, 0.2f);
+                });
                 other.transform.GetChild(0).DOLocalMoveX(0.0135f, 0.5f);
             }
         }

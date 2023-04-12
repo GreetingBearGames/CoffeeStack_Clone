@@ -37,6 +37,11 @@ public class MovementController : MonoBehaviour, IDragHandler
             position = new Vector3(current,position.y,position.z);  
             player.position = position;
         }
-        
-    }   
+    }
+    public void SpeedChanger(float speedRatio, float duration)
+    {
+        var newSpeedValue = movementSpeed * speedRatio;
+        // Tween a float called forwardSpeed to newSpeedValue in duration second
+        DOTween.To(() => movementSpeed, x => movementSpeed = x, newSpeedValue, duration);
+    }
 }
