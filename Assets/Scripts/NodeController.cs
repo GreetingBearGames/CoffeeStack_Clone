@@ -77,18 +77,25 @@ public class NodeController : MonoBehaviour
         switch (other.tag)
         {
             case "LidMaker":
+                if (this.transform.GetChild(0).GetChild(5).gameObject.activeInHierarchy)
+                    return;
                 value = 2;
                 ShowValue(other,value);
                 break;
             case "CremaFoam":
+                //Creama foam has sacond trigger               
                 value = 4;
                 ShowValue(other,value);
                 break;
             case "CoffeeAdder":
+                if (this.transform.GetChild(0).GetChild(3).gameObject.activeInHierarchy)
+                    return;
                 value = 7;
                 ShowValue(other,value);
                 break;
             case "SleeveAdder":
+                if (this.transform.GetChild(0).GetChild(2).gameObject.activeInHierarchy)
+                    return;
                 value = 3;
                 ShowValue(other,value);
                 break;
