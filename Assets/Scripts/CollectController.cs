@@ -13,15 +13,19 @@ public class CollectController : MonoBehaviour
     {
         if (other.CompareTag("Collectable"))
         {
+            SoundManager.instance.Play("CupCollect");
             Collect(other.gameObject);
         }
         if(!this.gameObject.CompareTag("Player")){
             if (other.CompareTag("LidMaker")) {
+                SoundManager.instance.Play("CupLevelUp");
                 this.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
                 this.transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
             } else if (other.CompareTag("CoffeeAdder")) {
+                SoundManager.instance.Play("CoffeeFill");
                     this.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
             }else if (other.CompareTag("CremaFoam")) {
+                SoundManager.instance.Play("CupLevelUp");
                 this.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
             }else if (other.CompareTag("SellGate")) {
                 var cupIndex = NodeManager.Instance.nodes.IndexOf(this.gameObject);
@@ -39,6 +43,7 @@ public class CollectController : MonoBehaviour
                 }
                 this.transform.DOLocalMoveX(5.5f, 0.5f);
             }else if (other.CompareTag("SleeveAdder")) {
+                SoundManager.instance.Play("CupLevelUp");
                 this.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
                 this.transform.DOLocalMoveY(this.transform.position.y - 0.5f, 0.2f).OnComplete(() =>{
                     this.transform.DOLocalMoveY(this.transform.position.y + 0.5f, 0.2f);

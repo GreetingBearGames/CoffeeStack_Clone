@@ -14,6 +14,7 @@ public class FinishHandStopper : MonoBehaviour
     {
         if (other.tag == "Player" && !isTriggeredonlyOnce)
         {
+            SoundManager.instance.Play("Money");
             isTriggeredonlyOnce = true;
             movementController.SpeedChanger(0, 0.2f);
             var playerAnimCont = GameObject.FindGameObjectWithTag("PlayerHandAnimController");
